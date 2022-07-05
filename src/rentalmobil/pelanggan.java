@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Gergaji 29
  */
-public class mobil extends javax.swing.JFrame {
-        tambahmobil mobilbaru = new tambahmobil();
+public class pelanggan extends javax.swing.JFrame {
+
         private DefaultTableModel model;
             Connection conn;
     Statement stm;
@@ -27,17 +27,17 @@ public class mobil extends javax.swing.JFrame {
     /**
      * Creates new form mobil
      */
-    public mobil() {
+    public pelanggan() {
         initComponents();
-        tampil_mobil();
+        tampil_pelanggan();
     }
-    public void tampil_mobil() {    
+    public void tampil_pelanggan() {    
         try {
-            String[] header = {"Kode Mobil", "Nama Mobil", "Jenis", "Harga", "Fasilitas"};
+            String[] header = {"Kode Pelanggan", "Nama Pelanggan", "Jenis Kelamin",'Usia', "Alamat", "Kota"};
             model = new DefaultTableModel(header, 0);           
             conn = DriverManager.getConnection(url, user, pass);
             stm = conn.createStatement();
-            ResultSet res = stm.executeQuery("SELECT kode_mobil, nama_mobil, jenis, harga, fasilitas FROM mobil");
+            ResultSet res = stm.executeQuery("SELECT kode_pelanggan, nama_pelanggan, jns_kel, usia,alamat,kota fasilitas FROM mobil");
             while (res.next()) {
                     String[] row = {res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5)};
                     model.addRow(row);
@@ -45,7 +45,7 @@ public class mobil extends javax.swing.JFrame {
             jTable1.setModel(model);
             
         } catch (SQLException ex) {
-            Logger.getLogger(mobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(pelanggan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
 
@@ -69,7 +69,7 @@ public class mobil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Data Mobil");
+        jLabel1.setText("Data Pelanggan");
 
         jButton1.setText("Tambah");
         jButton1.setActionCommand("tambahMobil");
@@ -148,8 +148,8 @@ public class mobil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        mobilbaru.setVisible(true);            // TODO add your handling code here:
+        tambahpelanggan pelangganbaru = new tambahpelanggan();
+        pelangganbaru.setVisible(true);            // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -173,20 +173,21 @@ public class mobil extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pelanggan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pelanggan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pelanggan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mobil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pelanggan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mobil().setVisible(true);
+                new pelanggan().setVisible(true);
             }
         });
     }
